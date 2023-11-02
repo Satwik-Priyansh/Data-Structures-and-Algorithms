@@ -76,83 +76,94 @@ public class maths {
 
         }
     }
+
     //efficient implementation for printing prime factors of a number
-    static void printPrimefactors(int n){
-        if(n<=1)return;
-        for(int i=2;i*i<=n;i++){
-            while(n%i==0){
+    static void printPrimefactors(int n) {
+        if (n <= 1) return;
+        for (int i = 2; i * i <= n; i++) {
+            while (n % i == 0) {
                 System.out.println(i);
-                n/=i;
+                n /= i;
             }
-        }if(n>1) System.out.println(n);
+        }
+        if (n > 1) System.out.println(n);
 
     }
+
     //print all divisors of a given number
-    static void printDivisors(int n){
-        if(isPrime(n)){
-            System.out.print(1+" "+n);
-        }else
-            for(int i=1;i<=n;i++){
-                if(n%i==0)
-                    System.out.print(i+" ");
+    static void printDivisors(int n) {
+        if (isPrime(n)) {
+            System.out.print(1 + " " + n);
+        } else
+            for (int i = 1; i <= n; i++) {
+                if (n % i == 0)
+                    System.out.print(i + " ");
             }
     }
+
     //efficient solution for printing divisors
-    static void printDivisors1(int n){
+    static void printDivisors1(int n) {
         int i;
-        for(i=1;i*i<=n;i++) {
+        for (i = 1; i * i <= n; i++) {
             if (n % i == 0)
                 System.out.println(i);
         }
-        for(;i>=1;i--){
-            if(n%i==0)
-                System.out.println(n/i);
+        for (; i >= 1; i--) {
+            if (n % i == 0)
+                System.out.println(n / i);
         }
 
     }
+
     //sieve of eratosthenes algorithm for printing prime numbers upto n
-    static void sieveOfEratosthenes(int n){
-        boolean[] prime= new boolean[n];
-        Arrays.fill(prime,0,n,true);
-        int p=2;
-        while(p*p<=n){
-            if(prime[p])
-                for(int i=p*p;i<n;i+=p){
-                    prime[i]=false;
-                }p++;
-        }for(int i=2;i<n;i++){
-            if(prime[i])
+    static void sieveOfEratosthenes(int n) {
+        boolean[] prime = new boolean[n];
+        Arrays.fill(prime, 0, n, true);
+        int p = 2;
+        while (p * p <= n) {
+            if (prime[p])
+                for (int i = p * p; i < n; i += p) {
+                    prime[i] = false;
+                }
+            p++;
+        }
+        for (int i = 2; i < n; i++) {
+            if (prime[i])
                 System.out.println(i);
         }
     }
+
     //to compute power of a number
-    static int power(int x,int y){
-        if(y==0)
+    static int power(int x, int y) {
+        if (y == 0)
             return 1;
         else
-            return x*power(x,y-1);
+            return x * power(x, y - 1);
     }
-    //efficient soulution to compute power
-    static int power1(int x,int y){
-        if(y==0)
-            return 1;
-        int temp=power(x,y/2);
-        temp=temp*temp;
-        if(y%2==0){
-            return temp;
-        }else
-            return temp*x;
-    }
-    //Binary exponentiation method
-    static int binaryExp(int x , int n){
-        int res=1;
-        while(n>0){
-            if(n%2!=0)
-                res = res * x;
-                x *= x;
-                n /= 2;
 
-        }return res;
+    //efficient soulution to compute power
+    static int power1(int x, int y) {
+        if (y == 0)
+            return 1;
+        int temp = power(x, y / 2);
+        temp = temp * temp;
+        if (y % 2 == 0) {
+            return temp;
+        } else
+            return temp * x;
+    }
+
+    //Binary exponentiation method
+    static int binaryExp(int x, int n) {
+        int res = 1;
+        while (n > 0) {
+            if (n % 2 != 0)
+                res = res * x;
+            x *= x;
+            n /= 2;
+
+        }
+        return res;
     }
 
     public static void main(String[] args) {
@@ -170,9 +181,9 @@ public class maths {
         printDivisors(100);
         printDivisors1(25);*/
         sieveOfEratosthenes(50);
-        System.out.println(power1(3,4));
-        System.out.println(power1(5,0));
-        System.out.println(binaryExp(2,3));
+        System.out.println(power1(3, 4));
+        System.out.println(power1(5, 0));
+        System.out.println(binaryExp(2, 3));
 
 
     }
